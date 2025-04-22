@@ -28,19 +28,20 @@ jobs:
     strategy:
       matrix:
         settings:
-          - target: x86_64-iossim-apple
-          - target: aarch64-iossim-apple
-          - target: aarch64-ios-apple
-          - target: x86_64-darwin-apple
-          - target: aarch64-darwin-apple
-          - target: x86_64-windows-gnu
-          - target: aarch64-windows-gnu
-          - target: x86_64-linux-gnu
-          - target: aarch64-linux-gnu
-          - target: x86_64-linux-musl
-          - target: aarch64-linux-musl
-          - target: x86_64-linux-android
-          - target: aarch64-linux-android
+          - target: i686-windows-gnu
+          # - target: x86_64-iossim-apple
+          # - target: aarch64-iossim-apple
+          # - target: aarch64-ios-apple
+          # - target: x86_64-darwin-apple
+          # - target: aarch64-darwin-apple
+          # - target: x86_64-windows-gnu
+          # - target: aarch64-windows-gnu
+          # - target: x86_64-linux-gnu
+          # - target: aarch64-linux-gnu
+          # - target: x86_64-linux-musl
+          # - target: aarch64-linux-musl
+          # - target: x86_64-linux-android
+          # - target: aarch64-linux-android
     name: Build native-deps ${{ matrix.settings.target }}
     runs-on: ubuntu-latest
     defaults:
