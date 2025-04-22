@@ -48,7 +48,7 @@ env RC="$WINDRES" ./configure \
         echo '--disable-win32thread'
         ;;
       *windows*)
-        echo "--host=${TARGET%%-*}-windows-mingw64"
+        echo "--host=${TARGET%%-*}-windows-mingw32"
         ;;
       x86_64-darwin*)
         echo "--host=${APPLE_TARGET}"
@@ -64,6 +64,10 @@ env RC="$WINDRES" ./configure \
       aarch64-*)
         # Required for the aarch64 assembly to be compiled correctly
         echo '--extra-asflags=-march=armv8.2-a+sve+sve2'
+        ;;
+      i686-*)
+        # Enable SSE2 for better performance on i686
+        echo '--extra-asflags=-msse2'
         ;;
     esac
   ) \
