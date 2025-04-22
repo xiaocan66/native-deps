@@ -33,7 +33,7 @@ case "${TARGET:?TARGET envvar is required to be defined}" in
     fi
     TARGET="arm64-apple-darwin-macho"
     ;;
-  x86_64-windows-gnu | aarch64-windows-gnu) ;;
+  x86_64-windows-gnu | i686-windows-gnu | aarch64-windows-gnu) ;;
   *)
     echo "Unsupported target: $TARGET" >&2
     exit 1
@@ -390,16 +390,22 @@ case "${TARGET:-}" in
       *)
         case "$CMD" in
           clang*)
-            c_argv+=("-march=x86-64-v2${features}")
+            # Clang defaults to haswell for x86_64
+            c_argv+=("-march=x86-64${features}")
             ;;
           *)
-            c_argv+=("-march=x86_64_v2${features}")
+            # Zig defaults to x86_64v2 (haswell)
+            c_argv+=("-march=x86_64${features}")
             ;;
         esac
         ;;
     esac
     ;;
-  arm64* | aarch64*)
+  i686*)
+    # Use a conservative baseline for 32-bit x86
+    c_argv+=("-march=i686${features}")
+    ;;
+  aarch64*)
     if [ "$preprocessor" -eq 0 ] && { [ $assembler -eq 1 ] || [ $assembler_file -eq 1 ]; }; then
       # This is an workaround for zig not supporting passing explict features when compiling assembler code
       # https://github.com/ziglang/zig/issues/10411
