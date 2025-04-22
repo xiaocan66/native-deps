@@ -55,6 +55,12 @@ case "$TARGET" in
       -DCROSS_COMPILE_NEON_DOTPROD=ON
     )
     ;;
+  i686*)
+    common_config+=(
+      -DCROSS_COMPILE_32=ON
+      -DENABLE_SSE2=ON
+    )
+    ;;
 esac
 
 mkdir 8bit 10bit 12bit
