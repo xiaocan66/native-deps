@@ -21,7 +21,7 @@ fi
 SYSTEM_NAME="${TARGET#*-}"
 SYSTEM_NAME="${SYSTEM_NAME%-*}"
 
-# On windows this should be AMD64 or ARM64
+# On windows this should be AMD64 or ARM64 or i686
 # On macOS aarch64 is called arm64
 # However most projects don't check for the windows/macOS specific names
 # Considering this we will just use the generic names, and patch any specific issues for those platforms
