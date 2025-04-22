@@ -16,7 +16,7 @@ for patch in \
   'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A07-dvdsubdec-return-number-of-bytes-used.patch' \
   'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A08-dvdsubdec-use-pts-of-initial-packet.patch' \
   'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A09-dvdsubdec-add-an-option-to-output-subtitles-with-emp.patch' \
-  'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A10-ccaption_dec-fix-pts-in-real_time-mode.patch' \
+  'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A10-ccaption_dec-fix-pts-in-real_time_mode.patch' \
   'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A11-avformat-matroskaenc-return-error-if-aac-extradata-c.patch' \
   'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A12-videotoolbox-disable-H.264-10-bit-on-Intel-macOS-it-.patch' \
   'https://github.com/HandBrake/HandBrake/raw/ed8cbd1/contrib/ffmpeg/A13-libswscale-fix-yuv420p-to-p01xle-color-conversion-bu.patch' \
@@ -77,6 +77,12 @@ fi
 # Architecture specific flags
 case "$TARGET" in
   x86_64*)
+    env_specific_arg+=(
+      --x86asmexe=nasm
+      --enable-x86asm
+    )
+    ;;
+  i686*)
     env_specific_arg+=(
       --x86asmexe=nasm
       --enable-x86asm
