@@ -9,6 +9,9 @@ case "$TARGET" in
   x86_64-windows*)
     _name='win-x64'
     ;;
+  i686-windows*)
+    _name='win-x86'
+    ;;
   aarch64-windows*)
     _name='win-arm64'
     ;;
