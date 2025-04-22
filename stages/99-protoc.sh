@@ -14,6 +14,9 @@ case "$TARGET" in
   x86_64-windows*)
     _suffix='win64'
     ;;
+  i686-windows*)
+    _suffix='win32'
+    ;;
   aarch64-windows*)
     # There is no binary available for Windows on ARM, so we use the x86 executable
     # which should run fine under Windows x86 emulation layer
